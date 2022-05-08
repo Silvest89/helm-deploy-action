@@ -1,0 +1,43 @@
+name: 'Helm Deploy'
+description: ''
+inputs:
+  kubeCA:
+    description: ''
+    required: true
+  kubeAPIServer:
+    description: ''
+    required: true
+  kubeToken:
+    description: ''
+    required: true
+  chartRepo:
+    description: ''
+    required: true     
+  appVersion:
+    description: ''
+    required: true      
+  namespace:
+    description: ''
+    required: true            
+  registryHost:
+    description: ''
+    required: true
+  registryUserName:
+    description: ''
+    required: true
+  registryPassword:
+    description: ''
+    required: true           
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - ${{ inputs.kubeCA }}
+  - ${{ inputs.kubeAPIServer }}
+  - ${{ inputs.kubeToken }}
+  - ${{ inputs.chartRepo }}  
+  - ${{ inputs.appVersion }}    
+  - ${{ inputs.namespace }}       
+  - ${{ inputs.registryHost }}
+  - ${{ inputs.registryUserName }}
+  - ${{ inputs.registryPassword }}     
